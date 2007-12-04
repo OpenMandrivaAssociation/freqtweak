@@ -1,6 +1,6 @@
 %define name 	freqtweak
 %define version 0.6.1
-%define release 1mdk
+%define release  %mkrel 1
 
 Name: 		%{name}
 Summary: 	GUI-based sound file tweaker
