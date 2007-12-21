@@ -12,6 +12,7 @@ Source0:	%{name}-%{version}.tar.bz2
 URL:		http://freqtweak.sourceforge.net/
 License:	GPL
 Group:		Sound
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	wxGTK2.4-devel >= 2.4.0-2mdk 
 BuildRequires:	fftw-devel jackit-devel
 
