@@ -1,20 +1,28 @@
-%define name 	freqtweak
-%define version 0.6.1
-%define release  %mkrel 1
+%define cvs	20080311
+%if %cvs
+%define release	%mkrel 0.%cvs.1
+%define tarname	%name-%cvs.tar.lzma
+%define dirname	%name
+%else
+%define release	%mkrel 1
+%define tarname	%name-%version.tar.bz2
+%define dirname	%name-%version
+%endif
 
-Name: 		%{name}
+Name: 		freqtweak
 Summary: 	GUI-based sound file tweaker
-Version: 	%{version}
+Version: 	0.7.0
 Release: 	%{release}
-
-Source0:	%{name}-%{version}.tar.bz2
-#Patch0:	freqtweak-0.5.3-gcc34.patch.bz2
+Source0:	http://prdownloads.sourceforge.net/%{name}/%{tarname}
 URL:		http://freqtweak.sourceforge.net/
-License:	GPL
+License:	GPLv2+
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	wxGTK2.4-devel >= 2.4.0-2mdk 
-BuildRequires:	fftw-devel jackit-devel
+BuildRequires:	wxGTK2.6-devel
+BuildRequires:	fftw-devel
+BuildRequires:	jackit-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	libsigc++1.2-devel
 
 %description
 FreqTweak is a tool for FFT-based realtime audio spectral manipulation and
@@ -25,19 +33,21 @@ form of scrolling-raster spectragrams and energy vs frequency plots
 displaying both pre- and post-processed spectra.
 
 %prep
-%setup -q
-#%patch0 -p0
+%setup -q -n %{dirname}
 
 %build
-%configure
+%if %cvs
+./autogen.sh
+%endif
+%configure2_5x
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+mkdir -p %{buildroot}%{_datadir}/applications/
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
@@ -45,17 +55,17 @@ Exec=%{name}
 Icon=sound_section
 Name=FreqTweak
 Comment=Sound manipulator
-Categories=Audio;
+Categories=AudioVideo;Audio;
 EOF
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
-%update_menus
+%{update_menus}
 		
 %postun
-%clean_menus
+%{clean_menus}
 
 %files
 %defattr(-,root,root)
