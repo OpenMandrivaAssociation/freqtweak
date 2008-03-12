@@ -14,6 +14,8 @@ Summary: 	GUI-based sound file tweaker
 Version: 	0.7.0
 Release: 	%{release}
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{tarname}
+# From Debian: fixes a variable cast error on x86-64 - AdamW 2008/03
+Patch0:		freqtweak-0.7.0-long.patch
 URL:		http://freqtweak.sourceforge.net/
 License:	GPLv2+
 Group:		Sound
@@ -34,6 +36,7 @@ displaying both pre- and post-processed spectra.
 
 %prep
 %setup -q -n %{dirname}
+%patch0 -p0 -b .long
 
 %build
 %if %cvs
