@@ -4,7 +4,7 @@
 %define tarname	%name-%cvs.tar.lzma
 %define dirname	%name
 %else
-%define release	%mkrel 1
+%define release	%mkrel 3
 %define tarname	%name-%version.tar.bz2
 %define dirname	%name-%version
 %endif
