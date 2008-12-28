@@ -1,10 +1,11 @@
+%define rel	2
 %define cvs	20080311
 %if %cvs
-%define release	%mkrel 0.%cvs.1
+%define release	%mkrel 0.%cvs.%rel
 %define tarname	%name-%cvs.tar.lzma
 %define dirname	%name
 %else
-%define release	%mkrel 3
+%define release	%mkrel %rel
 %define tarname	%name-%version.tar.bz2
 %define dirname	%name-%version
 %endif
@@ -16,11 +17,13 @@ Release: 	%{release}
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{tarname}
 # From Debian: fixes a variable cast error on x86-64 - AdamW 2008/03
 Patch0:		freqtweak-0.7.0-long.patch
+# Fix build with wx 2.8, one hint from the SUSE patch - AdamW 2008/12
+Patch1:		freqtweak-0.7.0-wx28.patch
 URL:		http://freqtweak.sourceforge.net/
 License:	GPLv2+
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	wxGTK2.6-devel
+BuildRequires:	wxgtku-devel
 BuildRequires:	fftw-devel
 BuildRequires:	jackit-devel
 BuildRequires:	libxml2-devel
@@ -37,6 +40,7 @@ displaying both pre- and post-processed spectra.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p0 -b .long
+%patch1 -p1 -b .wx28
 
 %build
 %if %cvs
