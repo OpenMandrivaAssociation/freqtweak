@@ -1,4 +1,4 @@
-%define rel	2
+%define rel	3
 %define cvs	20080311
 %if %cvs
 %define release	%mkrel 0.%cvs.%rel
