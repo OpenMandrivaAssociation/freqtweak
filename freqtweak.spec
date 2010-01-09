@@ -1,24 +1,23 @@
-%define rel	3
-%define cvs	20080311
+%define rel	1
+%define cvs	0
 %if %cvs
 %define release	%mkrel 0.%cvs.%rel
 %define tarname	%name-%cvs.tar.lzma
 %define dirname	%name
 %else
 %define release	%mkrel %rel
-%define tarname	%name-%version.tar.bz2
+%define tarname	%name-%version.tar.gz
 %define dirname	%name-%version
 %endif
 
 Name: 		freqtweak
 Summary: 	GUI-based sound file tweaker
-Version: 	0.7.0
+Version: 	0.7.2
 Release: 	%{release}
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{tarname}
 # From Debian: fixes a variable cast error on x86-64 - AdamW 2008/03
 Patch0:		freqtweak-0.7.0-long.patch
-# Fix build with wx 2.8, one hint from the SUSE patch - AdamW 2008/12
-Patch1:		freqtweak-0.7.0-wx28.patch
+Patch1:		freqtweak-0.7.2-deb-missing-include.patch
 URL:		http://freqtweak.sourceforge.net/
 License:	GPLv2+
 Group:		Sound
@@ -40,7 +39,7 @@ displaying both pre- and post-processed spectra.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p0 -b .long
-%patch1 -p1 -b .wx28
+%patch1 -p1
 
 %build
 %if %cvs
