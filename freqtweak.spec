@@ -85,3 +85,76 @@ rm -rf %{buildroot}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/applications/mandriva-%{name}.desktop
 
+
+
+%changelog
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 0.7.2-2mdv2011.0
++ Revision: 610772
+- rebuild
+
+* Sat Jan 09 2010 JÃ©rÃ´me Brenier <incubusss@mandriva.org> 0.7.2-1mdv2010.1
++ Revision: 488118
+- new version 0.7.2
+- drop wx28 patch (merged upstream)
+- add a patch from Debian for a missing include
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Sun Dec 28 2008 Adam Williamson <awilliamson@mandriva.org> 0.7.0-0.20080311.2mdv2009.1
++ Revision: 320116
+- adjust build deps and rebuild with wx 2.8
+- add wx28.patch: make it build with wx 2.8
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0.7.0-0.20080311.1mdv2009.0
++ Revision: 245413
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Wed Mar 12 2008 Adam Williamson <awilliamson@mandriva.org> 0.7.0-0.20080311.1mdv2008.1
++ Revision: 187019
+- add long.patch (from debian, fixes a code error that prevents build on x86-64)
+- build against wxGTK 2.6
+- update buildrequires
+- spec clean
+- update to CVS snapshot (debian's doing this so it's likely safe, and fixes build issues)
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - auto convert menu to XDG
+    - kill re-definition of %%buildroot on Pixel's request
+    - use %%mkrel
+    - import freqtweak
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Sun Jul 25 2004 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.6.1-1mdk
+- 0.6.1
+- drop P0
+
+* Wed Jun 30 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 0.5.3-2mdk
+- rebuild with new g++
+- patch 0: fix compiling with new g++
+
+* Mon Feb 16 2004 Austin Acton <austin@mandrake.org> 0.5.3-1mdk
+- 0.5.3
+- buildrequires for lib64
+
+* Wed Aug 20 2003 Austin Acton <aacton@yorku.ca> 0.5.2-1mdk
+- 0.5.2
+- add manpage
+
+* Thu Jul 17 2003 Austin Acton <aacton@yorku.ca> 0.5.1-1mdk
+- 0.5.1
+
+* Mon Mar 24 2003 Lenny Cartier <lenny@mandrakesoft.com> 0.4.7-1mdk
+- 0.4.7
+
+* Thu Feb 13 2003 Götz Waschk <waschk@linux-mandrake.com> 0.4.5-2mdk
+- rebuild against wxGTK 2.4
+
+* Thu Jan 30 2003 Austin Acton <aacton@yorku.ca> 0.4.5-1mdk
+- initial package
