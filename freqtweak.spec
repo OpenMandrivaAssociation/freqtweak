@@ -1,7 +1,7 @@
 Name:		freqtweak
 Summary:	GUI-based sound file tweaker
 Version:	0.7.2
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Sound
 Url:		http://freqtweak.sourceforge.net/
