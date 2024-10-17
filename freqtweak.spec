@@ -4,7 +4,7 @@ Version:	0.7.2
 Release:	4
 License:	GPLv2+
 Group:		Sound
-Url:		http://freqtweak.sourceforge.net/
+Url:		https://freqtweak.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # From Debian: fixes a variable cast error on x86-64 - AdamW 2008/03
 Patch0:		freqtweak-0.7.0-long.patch
