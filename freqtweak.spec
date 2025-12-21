@@ -9,6 +9,11 @@ Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # From Debian: fixes a variable cast error on x86-64 - AdamW 2008/03
 Patch0:		freqtweak-0.7.0-long.patch
 Patch1:		freqtweak-0.7.2-deb-missing-include.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	wxgtku2.8-devel
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(jack)
